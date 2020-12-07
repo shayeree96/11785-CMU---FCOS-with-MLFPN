@@ -8,7 +8,7 @@ import numpy as np
 import random
 import torch.backends.cudnn as cudnn
 import argparse
-from model.fcos_copy import FCOSDetector
+from model.fcos import FCOSDetector
 from dataset.VOC_dataset import VOCDataset
 from tensorboardX import SummaryWriter
 writer = SummaryWriter()
