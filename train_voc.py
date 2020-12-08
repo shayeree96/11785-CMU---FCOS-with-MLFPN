@@ -28,13 +28,13 @@ cudnn.benchmark = False
 cudnn.deterministic = True
 random.seed(0)
 transform = Transforms()
-train_dataset = VOCDataset(root_dir='/home/shayeree/FCOS-PyTorch-37.2AP/data/VOCdevkit/VOC2007',resize_size=[800,1333],
+train_dataset = VOCDataset(root_dir='./data/VOCdevkit/VOC2007',resize_size=[800,1333],
                            split='trainval',use_difficult=False,is_train=True,augment=transform)
 
 model = FCOSDetector(mode="training")#.cuda()
 
 print('==> Resuming from checkpoint..')
-model.load_state_dict(torch.load('/home/shayeree/FCOS-PyTorch-37.2AP/checkpoint/model_Pretrained_29.pth'),strict=False)
+model.load_state_dict(torch.load('./checkpoint/model_Pretrained_29.pth'),strict=False)
 model = torch.nn.DataParallel(model).cuda()
 #model.requires_grad_(False)
 count=0
