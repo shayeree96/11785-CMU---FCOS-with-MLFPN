@@ -86,8 +86,6 @@ Run:
 ```
 python3 eval_voc.py
 ```
-## Results
-TO BE ADDED
 ## Reference
 [1] Tian, Z., Shen, C., Chen, H., and He, T., “FCOS: Fully Convolutional One-Stage Object
 Detection”, <i>arXiv e-prints</i>, 2019.
