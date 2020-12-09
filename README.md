@@ -85,6 +85,11 @@ Navigate to the project root directory
 Run:
 ```
 python3 eval_voc.py
+
+<div align="center">
+  <img src="images/22.png" width="800"/>
+</div>
+
 ```
 ## Reference
 [1] Tian, Z., Shen, C., Chen, H., and He, T., “FCOS: Fully Convolutional One-Stage Object
