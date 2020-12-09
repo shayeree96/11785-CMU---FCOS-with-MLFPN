@@ -87,7 +87,7 @@ Run:
 python3 eval_voc.py
 ```
 <div align="center">
-  <img src="images/22.png" width="800"/>
+  <img src="images/22_new.png" width="800"/>
 </div>
 
 ## Reference
