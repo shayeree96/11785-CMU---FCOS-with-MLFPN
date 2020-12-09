@@ -3,6 +3,9 @@ This project replaces the original feature pyramid network presented in FCOS wit
 
 ## Background
 - FCOS[1] is an anchor-free object detector that uses feature pyramid netword (FPN) to extract semantic features. Compared with anchor-based detectors, which uses a set of predefined bounding boxes to capture objects, anchor-free detectors directly predict bounding boxes around the centres of potential objects. FPN were created solely with the purpose of making detectio models scale invariant. It creates a hierarchical structure containing semantic features at various levels, with high level features in charge of bigger objects and small ones in charge of smaller objects.
+<div align="center">
+  <img src="images/FPN_illustration.png" width="600"/>
+</div>
 - Multi-Level Feature Pyramid (MLFPN)[2] is a more complicated feature extractor. Instead of using a single FPN, MLFPN feeds the base feature into a block of alternating joint Thinned U-shape Modules (TUM) and Feature Fusion Modules (FFM) to extract more representative, multi-level multi-scale features. Finally feature maps with equivalent scales are gathered up, forming the final feature pyramid for object detection. 
 
 PICTURES TO BE ADDED
