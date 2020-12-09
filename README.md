@@ -16,6 +16,9 @@ git clone https://github.com/shayeree96/11785-CMU---FCOS-with-MLFPN
 ```
 #### Set up environment
 Will add yaml file and requirement.txt file
+```
+pip install -r requirements.txt
+```
 #### Download VOC dataset
 Navigate to the project root directory
 
