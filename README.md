@@ -14,6 +14,7 @@ In this project we integrated FCOS feature detector with MLFPN. FCOS has shown r
 <div align="center">
   <img src="images/FCOS_MLFPN_Architecture.png" width="800"/>
 </div>
+
 ## Installation
 #### Download project files
 ```
