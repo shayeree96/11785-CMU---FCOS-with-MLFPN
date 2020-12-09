@@ -16,6 +16,7 @@ git clone https://github.com/shayeree96/11785-CMU---FCOS-with-MLFPN
 ```
 #### Set up environment
 ```
+conda env create -f environment.yaml`
 pip install -r requirements.txt
 ```
 #### Download VOC dataset
