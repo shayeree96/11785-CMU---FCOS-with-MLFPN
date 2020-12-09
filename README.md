@@ -8,8 +8,9 @@ This project replaces the original feature pyramid network presented in FCOS wit
 </div>
 
 - Multi-Level Feature Pyramid (MLFPN)[2] is a more complicated feature extractor. Instead of using a single FPN, MLFPN feeds the base feature into a block of alternating joint Thinned U-shape Modules (TUM) and Feature Fusion Modules (FFM) to extract more representative, multi-level multi-scale features. Finally feature maps with equivalent scales are gathered up, forming the final feature pyramid for object detection. 
-
-PICTURES TO BE ADDED
+<div align="center">
+  <img src="images/FCOS_MLFPN_Architectures.png" width="600"/>
+</div>
 
 ## Introduction
 In this project we integrated FCOS feature detector with MLFPN. FCOS has shown remarkable efficiency and adaptability for object detection, while MLFPN demonstrates excellent performance in feature extraction. Thus, we proposed our FCOS-MLFPN architecture in order to boost FCOS's performance.
