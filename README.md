@@ -15,7 +15,6 @@ In this project we integrated FCOS feature detector with MLFPN. FCOS has shown r
 git clone https://github.com/shayeree96/11785-CMU---FCOS-with-MLFPN
 ```
 #### Set up environment
-Will add yaml file and requirement.txt file
 ```
 pip install -r requirements.txt
 ```
