@@ -12,7 +12,7 @@ This project integrates an anchor-free object detector (FCOS) with a multi-level
 ## Introduction
 In this project we integrated FCOS feature detector with MLFPN. FCOS has shown remarkable efficiency and adaptability for object detection, while MLFPN demonstrates excellent performance in feature extraction. Thus, we proposed our FCOS-MLFPN architecture in order to boost FCOS's performance.
 <div align="center">
-  <img src="images/FCOS_MLFPN_Architecture.png" width="800"/>
+  <img src="images/FCOS_MLFPN_Architecture.png" width="1000"/>
 </div>
 
 ## Installation
