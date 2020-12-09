@@ -93,7 +93,7 @@ Detection”, <i>arXiv e-prints</i>, 2019.
 [2] Q. Zhao, T. Sheng, Y. Wang, Z. Tang, Y. Chen, L. Cai, and H. Ling. M2det: A single-shot object
 detector based on multi-level feature pyramid network. AAAI, 2019.
 ## Acknowledgements
-Our project is based on the following two githubs:
+Our project is based on the following two github repositories:
 
 https://github.com/zhenghao977/FCOS-PyTorch-37.2AP
 
