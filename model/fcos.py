@@ -48,7 +48,7 @@ class FCOS(nn.Module):
         m2det = build_net('train', 
                 size = 320, # Only 320, 512, 704 and 800 are supported
                 config = model['m2det_config'])
-        all_P=m2det(C4,C5)
+        all_P=m2det(C3,C4)
         cls_logits,cnt_logits,reg_preds=self.head(all_P)
         return [cls_logits,cnt_logits,reg_preds]
 
