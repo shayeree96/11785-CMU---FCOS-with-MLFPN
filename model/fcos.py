@@ -37,16 +37,9 @@ class FCOS(nn.Module):
             print("INFO===>success frozen backbone stage1")
 
     def forward(self,x):
-        '''
-        Returns
-        list [cls_logits,cnt_logits,reg_preds]  
-        cls_logits  list contains five [batch_size,class_num,h,w]
-        cnt_logits  list contains five [batch_size,1,h,w]
-        reg_preds   list contains five [batch_size,4,h,w]
-        '''
         C3,C4,C5=self.backbone(x)
         m2det = build_net('train', 
-                size = 320, # Only 320, 512, 704 and 800 are supported
+                size = 320, 
                 config = model['m2det_config'])
         all_P=m2det(C3,C4)
         cls_logits,cnt_logits,reg_preds=self.head(all_P)
@@ -63,13 +56,8 @@ class DetectHead(nn.Module):
             self.config=DefaultConfig
         else:
             self.config=config
+
     def forward(self,inputs):
-        '''
-        inputs  list [cls_logits,cnt_logits,reg_preds]  
-        cls_logits  list contains five [batch_size,class_num,h,w]  
-        cnt_logits  list contains five [batch_size,1,h,w]  
-        reg_preds   list contains five [batch_size,4,h,w] 
-        '''
         cls_logits,coords=self._reshape_cat_out(inputs[0],self.strides)#[batch_size,sum(_h*_w),class_num]
         cnt_logits,_=self._reshape_cat_out(inputs[1],self.strides)#[batch_size,sum(_h*_w),1]
         reg_preds,_=self._reshape_cat_out(inputs[2],self.strides)#[batch_size,sum(_h*_w),4]
@@ -163,10 +151,6 @@ class DetectHead(nn.Module):
         
         if boxes.numel() == 0:
             return torch.empty((0,), dtype=torch.int64, device=boxes.device)
-        # strategy: in order to perform NMS independently per class.
-        # we add an offset to all the boxes. The offset is dependent
-        # only on the class idx, and is large enough so that boxes
-        # from different classes do not overlap
         max_coordinate = boxes.max()
         offsets = idxs.to(boxes) * (max_coordinate + 1)
         boxes_for_nms = boxes + offsets[:, None]
@@ -174,11 +158,6 @@ class DetectHead(nn.Module):
         return keep
 
     def _coords2boxes(self,coords,offsets):
-        '''
-        Args
-        coords [sum(_h*_w),2]
-        offsets [batch_size,sum(_h*_w),4] ltrb
-        '''
         x1y1=coords[None,:,:]-offsets[...,:2]
         x2y2=coords[None,:,:]+offsets[...,2:]#[batch_size,sum(_h*_w),2]
         boxes=torch.cat([x1y1,x2y2],dim=-1)#[batch_size,sum(_h*_w),4]
@@ -186,13 +165,6 @@ class DetectHead(nn.Module):
 
 
     def _reshape_cat_out(self,inputs,strides):
-        '''
-        Args
-        inputs: list contains five [batch_size,c,_h,_w]
-        Returns
-        out [batch_size,sum(_h*_w),c]
-        coords [sum(_h*_w),2]
-        '''
         batch_size=inputs[0].shape[0]
         c=inputs[0].shape[1]
         out=[]
@@ -233,11 +205,6 @@ class FCOSDetector(nn.Module):
         
     
     def forward(self,inputs):
-        '''
-        inputs 
-        [training] list  batch_imgs,batch_boxes,batch_classes
-        [inference] img
-        '''
 
         if self.mode=="training":
             batch_imgs,batch_boxes,batch_classes=inputs
@@ -246,10 +213,6 @@ class FCOSDetector(nn.Module):
             losses=self.loss_layer([out,targets])
             return losses
         elif self.mode=="inference":
-            # raise NotImplementedError("no implement inference model")
-            '''
-            for inference mode, img should preprocessed before feeding in net 
-            '''
             batch_imgs=inputs
             out=self.fcos_body(batch_imgs)
             scores,classes,boxes=self.detection_head(out)
