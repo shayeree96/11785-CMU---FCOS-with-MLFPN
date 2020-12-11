@@ -1,12 +1,8 @@
 '''
 This code is based on pytorch_ssd and RFBNet.
-Details about the modules:
-               TUM - Thinned U-shaped Module
-               MLFPN - Multi-Level Feature Pyramid Network
-               M2Det - Multi-level Multi-scale single-shot object Detector
-Author:  Qijie Zhao (zhaoqijie@pku.edu.cn)
-Finished Date:  01/17/2019
 '''
+
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
