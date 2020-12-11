@@ -164,12 +164,6 @@ class M2Det(nn.Module):
     
 
 def build_net(phase='train', size=320, config = None):
-    if not phase in ['test','train']:
-        raise ValueError("Error: Phase not recognized")
-
-    if not size in [320, 512, 704, 800]:
-        raise NotImplementedError("Error: Sorry only M2Det320,M2Det512 M2Det704 or M2Det800 are supported!")
-    
     return M2Det(phase, size, config)
 
 def print_info(info, _type=None):
